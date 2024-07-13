@@ -34,6 +34,25 @@ text-align: center;
 } 
         
     </style>
+    <script> 
+
+function validateForm() { 
+
+var newPassword = document.getElementById("newPassword").value; 
+
+if (newPassword.length < 8) { 
+
+alert("Password must be at least 8 characters long."); 
+
+return false; 
+
+} 
+
+return true; 
+
+} 
+
+</script>
 </head>
 <body>
 <div class="header"> 
@@ -41,7 +60,7 @@ text-align: center;
 <h1>User Management</h1> 
 </div> 
     <h2>Edit Password</h2>
-    <form action="EditUserServlet" method="post">
+    <form action="EditUserServlet" method="post" onsubmit="return validateForm()">
         <div class="form-group">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
