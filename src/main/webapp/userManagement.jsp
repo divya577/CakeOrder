@@ -23,23 +23,24 @@
     </style>
     <script> 
 
-function validateForm() { 
+    function validateForm() { 
 
-var newPassword = document.getElementById("newPassword").value; 
+    var newPassword = document.getElementById("newPassword").value; 
 
-if (newPassword.length < 8) { 
+    if (newPassword.length < 8) { 
 
-alert("Password must be at least 8 characters long."); 
+    alert("Password must be at least 8 characters long."); 
 
-return false; 
+    return false; 
 
-} 
+    } 
+    return true; 
 
-return true; 
+    } 
 
-} 
-
-</script>
+    </script>
+    
+   
 </head>
 <body>
 
