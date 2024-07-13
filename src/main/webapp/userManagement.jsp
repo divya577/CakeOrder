@@ -2,39 +2,51 @@
 <html>
 <head>
     <title>User Management</title>
-    <style>
-        body {
-            background-color: #fdf5e6;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-        }
-        .form-group input {
-            width: 50%;
-            padding: 8px;
-        }
-        .form-group button {
-            padding: 8px 16px;
-        }
-        /* Newly added for header */ 
+<style>
+body {
+	background-color: #fdf5e6;
+}
 
-.header { 
+.form-group {
+	margin-bottom: 15px;
+}
 
-background-color: black; 
+.form-group label {
+	display: block;
+}
 
-color: white; 
+.form-group input {
+	width: 50%;
+	padding: 8px;
+}
 
-padding: 2px; 
+.form-group button {
+	padding: 8px 16px;
+}
+/* Newly added for header */
+.header {
+	background-color: black;
+	color: white;
+	padding: 2px;
+	text-align: center;
+}
+</style>
+<script>
+	function validateForm() {
 
-text-align: center; 
+		var newPassword = document.getElementById("newPassword").value;
 
-} 
+		if (newPassword.length < 8) {
 
-      
-    </style>
+			alert("Password must be at least 8 characters long.");
+
+			return false;
+
+		}
+		return true;
+
+	}
+</script>
 </head>
 <body>
 
