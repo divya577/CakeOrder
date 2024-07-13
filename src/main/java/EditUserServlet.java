@@ -49,6 +49,7 @@ public class EditUserServlet extends HttpServlet {
 
         } 
 
+        
         try (Connection connection = getConnection(); 
              PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_USER_SQL)) {
             preparedStatement.setString(1, newPassword);
