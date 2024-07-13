@@ -37,6 +37,17 @@ public class EditUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
         String newPassword = request.getParameter("newPassword");
+     // Password needs to 8 characters long 
+
+        if (newPassword.length() < 8) { 
+
+            request.setAttribute("errorMessage", "Password must be at least 8 characters long."); 
+
+            request.getRequestDispatcher("/editUser.jsp").forward(request, response); 
+
+            return; 
+
+        } 
 
         try (Connection connection = getConnection(); 
              PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_USER_SQL)) {
