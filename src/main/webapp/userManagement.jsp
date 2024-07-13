@@ -19,6 +19,20 @@
         .form-group button {
             padding: 8px 16px;
         }
+        /* Newly added for header */ 
+
+.header { 
+
+background-color: black; 
+
+color: white; 
+
+padding: 2px; 
+
+text-align: center; 
+
+} 
+        
     </style>
     <script> 
 
@@ -41,7 +55,10 @@ return true;
 </script>
 </head>
 <body>
-    <h1>User Management</h1>
+<div class="header"> 
+
+<h1>User Management</h1> 
+</div> 
     <h2>Edit Password</h2>
     <form action="EditUserServlet" method="post" onsubmit="return validateForm()">
         <div class="form-group">
