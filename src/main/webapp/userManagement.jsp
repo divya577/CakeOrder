@@ -21,6 +21,25 @@
         }
                 
     </style>
+    <script> 
+
+function validateForm() { 
+
+var newPassword = document.getElementById("newPassword").value; 
+
+if (newPassword.length < 8) { 
+
+alert("Password must be at least 8 characters long."); 
+
+return false; 
+
+} 
+
+return true; 
+
+} 
+
+</script>
 </head>
 <body>
 
