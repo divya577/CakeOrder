@@ -6,7 +6,52 @@
   <packaging>war</packaging>
   <name>cake</name>
   <description>cake</description>
+	<properties>
+		<selenium.groupId>org.seleniumhq.selenium</selenium.groupId>
+		<selenium.artifactId>selenium-java</selenium.artifactId>
+		<selenium.version>2.53.1</selenium.version>
+		<testng.groupId>org.testng</testng.groupId>
+		<testng.artifactId>testng</testng.artifactId>
+		<testng.version>6.9.10</testng.version>
+		
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		
+		<junit-jupiter.groupId>org.junit.jupiter</junit-jupiter.groupId>
+		<junit-jupiter.artifactId>junit-jupiter</junit-jupiter.artifactId>
+		<junit-jupiter.version>5.7.0</junit-jupiter.version>
+		
+		<!--  Jacoco properties  -->
+		<jacoco.groupId>org.jacoco</jacoco.groupId>
+		<jacoco.artifactId>jacoco-maven-plugin</jacoco.artifactId>
+		<jacoco.version>0.8.7</jacoco.version>
+		<!--  SonarQube properties  -->
+		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+		<sonar.language>java</sonar.language>
+		<junit-jupiter.groupId>org.junit.jupiter</junit-jupiter.groupId>
+		<junit-jupiter.artifactId>junit-jupiter</junit-jupiter.artifactId>
+		<junit-jupiter.version>5.7.0</junit-jupiter.version>
+	</properties>
   <dependencies>
+		<dependency>
+			<groupId>${junit-jupiter.groupId}</groupId>
+			<artifactId>${junit-jupiter.artifactId}</artifactId>
+			<version>${junit-jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>${selenium.groupId}</groupId>
+			<artifactId>${selenium.artifactId}</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${testng.groupId}</groupId>
+			<artifactId>${testng.artifactId}</artifactId>
+			<version>${testng.version}</version>
+			<scope>test</scope>
+		</dependency>
 	<dependency>
 		<groupId>javax.servlet</groupId>
 		<artifactId>javax.servlet-api</artifactId>
@@ -19,18 +64,25 @@
 		<version>2.3.1</version>
 		<scope>provided</scope>
 	</dependency>
-	<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 	<dependency>
 	<groupId>mysql</groupId>
 	<artifactId>mysql-connector-java</artifactId>
 	<version>8.0.25</version>
 	</dependency>
-	<!-- https://mvnrepository.com/artifact/jstl/jstl -->
+		<!-- https://mvnrepository.com/artifact/jstl/jstl -->
 	<dependency>
 	<groupId>jstl</groupId>
 	<artifactId>jstl</artifactId>
 	<version>1.2</version>
 	</dependency>
+	<!-- mockito delete later -->
+	<dependency>
+        <groupId>org.mockito</groupId>
+        <artifactId>mockito-core</artifactId>
+        <version>3.11.2</version>
+        <scope>test</scope>
+    </dependency>
 </dependencies>
   <build>
     <plugins>
@@ -38,13 +90,47 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.1</version>
         <configuration>
-          <release>17</release>
-        </configuration>
+			<!-- USED to be 17 changed it for sonar -->
+			<release>11</release>
+		</configuration>
       </plugin>
       <plugin>
         <artifactId>maven-war-plugin</artifactId>
         <version>3.2.3</version>
       </plugin>
+			<plugin>
+				<artifactId>maven-sunfire-plugin</artifactId>
+				<version>2.22.1</version>
+				<configuration>
+					<suiteXmlFiles>
+						<suiteXmlFile>testng.xml</suiteXmlFile>
+					</suiteXmlFiles>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>${jacoco.groupId}</groupId>
+				<artifactId>${jacoco.artifactId}</artifactId>
+				<version>${jacoco.version}</version>
+				<configuration>
+					<formats>XML</formats>
+				</configuration>
+				<executions>
+					<execution>
+						<id>prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
     </plugins>
   </build>
 </project>
