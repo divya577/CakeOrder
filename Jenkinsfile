@@ -5,7 +5,7 @@ pipeline {
 		jdk 'OpenJDK11'
 		}
 	environment {
-        SONARQUBE_URL = 'http://localhost:9000/'
+        SONARQUBE_URL = 'http://localhost:9000'
         SONARQUBE_TOKEN = credentials('squ_023da3530e45a76129178cc41adfd7a8bd337580') 
     }
 	stages{
