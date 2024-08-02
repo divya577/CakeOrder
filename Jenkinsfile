@@ -23,7 +23,12 @@ pipeline {
 				bat "mvn install -DskipTests"
 			}
 		}
-
+	stage("SonarQube Analysis") {
+            steps {
+                echo "Start SonarQube Analysis"
+                bat "mvn sonar:sonar -Dsonar.projectKey=cake"
+            }
+        }
 	}
 }
 	
