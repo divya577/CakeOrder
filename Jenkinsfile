@@ -24,5 +24,19 @@ pipeline {
 			}
 		}
 	}
+post {
+        always {
+            emailext(
+                to: 'divv10140@gmail.com',
+                subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS',
+                body: """\
+$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:
+
+Check console output at $BUILD_URL to view the results.
+""",
+                attachLog: true
+            )
+        }
+    }
 }
 	
