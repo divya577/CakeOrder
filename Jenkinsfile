@@ -23,13 +23,13 @@ pipeline {
 				bat "mvn install -DskipTests"
 			}
 		}
-	}
-		stage("SonarQube Analysis") {
+	stage("SonarQube Analysis") {
             steps {
                 echo "Start SonarQube Analysis"
                 bat "mvn sonar:sonar -Dsonar.projectKey=cake"
             }
         }
+	}
 post {
         always {
             emailext(
