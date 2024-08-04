@@ -24,6 +24,12 @@ pipeline {
 			}
 		}
 	}
+		stage("SonarQube Analysis") {
+            steps {
+                echo "Start SonarQube Analysis"
+                bat "mvn sonar:sonar -Dsonar.projectKey=cake"
+            }
+        }
 post {
         always {
             emailext(
