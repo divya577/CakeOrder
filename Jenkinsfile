@@ -28,11 +28,11 @@ post {
         always {
             emailext(
                 to: 'divv10140@gmail.com',
-                subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS',
+                subject: "${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - ${currentBuild.currentResult}",
                 body: """\
-$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:
+${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - ${currentBuild.currentResult}:
 
-Check console output at $BUILD_URL to view the results.
+Check console output at ${env.BUILD_URL} to view the results.
 """,
                 attachLog: true
             )
