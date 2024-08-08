@@ -85,6 +85,8 @@
         <configuration>
 			<!-- USED to be 17 changed it for sonar -->
 			<release>11</release>
+			<source>1.8</source>
+        	<target>1.8</target>
 		</configuration>
       </plugin>
       <plugin>
