@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/CartServlet")
 public class CartServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-
+//tester
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         List<String> cart = (List<String>) session.getAttribute("cart");
